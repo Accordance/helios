@@ -1,0 +1,16 @@
+{
+  "jquery": true,
+  "browser": true,
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "strict": true,
+  "freeze": true,
+  "immed": true,
+  "noarg": true,
+  "nonbsp": true,
+  "nonew": true,
+  "globals": {
+
+  }
+}
