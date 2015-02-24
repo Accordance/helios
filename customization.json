@@ -1,5 +1,6 @@
 {
   "requireMain": "js/main.js", 
-  "projectName": "Accordance", 
+  "projectName": "Accordance",
+  "projectLogo": "<img src='img/accordance_logo_grey.png' alt='Accordance' width='270' height='30' style='position: relative; top: -5px;'>",
   "copyright": "&copy; Accordance 2015"
 }

@@ -1,11 +1,13 @@
 module.exports = function (grunt) {
   'use strict';
 
+  var _ = require('lodash');
+
   // loads all grunt tasks from package.json
   require('load-grunt-tasks')(grunt);
 
   // uncomment to time each grunt tasks
-//    require('time-grunt')(grunt);
+  // require('time-grunt')(grunt);
 
   var staticFiles = require('./staticFiles.js');
   var utils = require('./utilsGrunt.js');
@@ -251,7 +253,7 @@ module.exports = function (grunt) {
         options: {
           patterns: [
             {
-              json: {requireMain: '<%= mainJsLocation %>'}
+              json: _.merge({}, grunt.file.readJSON('customization.json'), {requireMain: '<%= mainJsLocation %>'})
             }
           ]
         },
@@ -319,18 +321,18 @@ module.exports = function (grunt) {
 
     // increments the version in the package.json and bower.json
     /*
-    bump: {
-      options: {
-        commit: true,
-        commitMessage: 'Release v%VERSION%',
-        push: true,
-        createTag: true,
-        tagName: 'v=<%= pkg.version %>',
-        tagMessage: 'Version <%= pkg.version %>'
-      },
-      files: staticFiles.projectVersionFiles
-    },
-    */
+     bump: {
+     options: {
+     commit: true,
+     commitMessage: 'Release v%VERSION%',
+     push: true,
+     createTag: true,
+     tagName: 'v=<%= pkg.version %>',
+     tagMessage: 'Version <%= pkg.version %>'
+     },
+     files: staticFiles.projectVersionFiles
+     },
+     */
     bump: {
       options: {
         files: staticFiles.projectVersionFiles,
@@ -431,11 +433,11 @@ module.exports = function (grunt) {
       },
       css: {
         files: ['<%= cssFiles %>'],
-        tasks: ['dist','css']
+        tasks: ['dist', 'css']
       },
       html: {
         files: ['<%= htmlFiles %>'],
-        tasks: ['dist','html']
+        tasks: ['dist', 'html']
       },
       tests: {
         files: ['<%= testFiles %>'],
