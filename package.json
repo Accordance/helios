@@ -1,6 +1,6 @@
 {
   "name": "portal",
-  "version": "0.1.234",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "connect-modrewrite": "0.7.9",
@@ -28,6 +28,7 @@
     "grunt-replace": "0.8.0",
     "grunt-template": "0.2.3",
     "grunt-usemin": "2.6.2",
+    "grunt-compile-handlebars": "1.0.1",
     "jshint-stylish": "1.0.0",
     "karma": "0.12.28",
     "karma-chrome-launcher": "0.1.7",
