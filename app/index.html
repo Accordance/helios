@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@@projectName</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <!-- build:css feature/index/indexCombined.css -->
+    <link rel="stylesheet" href="feature/index/index.css">
+    <link rel="stylesheet" href="feature/dependencyGraph/forced-graph-style.css">
+    <!-- endbuild -->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" data-ui-sref="home">
+                @@projectLogo
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <p data-ng-if="!userName" data-ng-cloak class="navbar-text pull-right">
+                <a data-ui-sref="login" class="navbar-link">Sign In</a>
+            </p>
+
+            <p data-ng-if="userName" data-ng-cloak class="navbar-text pull-right">
+                Logged in as <a data-ui-sref="myProfile" class="navbar-link">{{ userName }}</a>
+            </p>
+            <ul class="nav navbar-nav">
+                <li class="active"><a data-ui-sref="home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-left" data-ui-view data-ng-animate="{enter:'fade-enter'}"></div>
+    <hr>
+
+    <footer>
+        <p>@@copyright</p>
+    </footer>
+</div>
+<script type="text/javascript" data-main="@@requireMain" src="lib/requirejs/require.js"></script>
+</body>
+</html>

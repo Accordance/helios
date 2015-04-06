@@ -1,0 +1,62 @@
+body {
+  font-size: 16px;
+}
+
+.node {
+/*  stroke: #fff; */
+  stroke-width: 1.5px;
+  font: 10px sans-serif;
+}
+
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+}
+
+.node text.shadow {
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-opacity: .8;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+  fill: none;
+  stroke: #C1D6E1;
+  stroke-width: 2px;
+}
+
+.marker {
+  fill: #999;
+  /* stroke-opacity: .6; */
+}
+
+.node_circle {
+  fill: #ccc;
+  cursor: pointer;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+.node_circle:hover { 
+  stroke: red;
+  stroke-width: 1.5px;
+}
+
+.legend {
+    height: 25px;
+}
+
+.legend-type {
+    display: inline;
+    margin-left: 20px;
+}
+
+.legend-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    background: #0CC;
+}

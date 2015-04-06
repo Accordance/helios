@@ -1,0 +1,26 @@
+// Home page thumbnail stylings:
+
+.Home-Thumbnail {
+	display: inline-block;
+	text-align: center;
+
+	.Home-Thumbnail-Anchor {
+		display: block;
+
+		.Home-Thumbnail-Image {
+			display: block;
+			margin: 0 auto;
+			width: 75%;
+			max-width: 20rem;
+			opacity: .7;
+
+				&:hover {
+				opacity: 1;
+			}
+		}
+
+		.Home-Thumbnails-Name {
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,94 @@
+<!--
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a ui-sref="applications.catalog">Applications</a></li>
+    <li class="active">{{app.name}}</li>
+</ol>
+-->
+
+<!-- build:css feature/appInfo/appDetail.css -->
+<link rel="stylesheet" href="feature/appInfo/appDetail.css">
+<!-- endbuild -->
+
+<div data-ng-if="!errorMessage">
+<h3>Application "{{app.name}}"</h3>
+<dl class="dl-horizontal">
+  <dt>Name</dt><dd>{{app.name}}</dd>
+  <dt>Version</dt><dd>{{ app.version }}</dd>
+  <dt>Healthchecks</dt>
+  <dd>
+    <td class="healthcheck-statuses">
+      <span>
+        <p>Node check: <span class="label label-success">{{ app.health_url }}</span></p>
+        <p>LB check: <span class="label label-success">{{ app.health_lb_url }}</span></p>
+      </span>
+    </td>
+  </dd>
+  <dt>Description</dt><dd>{{app.description}}</dd>
+  <dt>Source</dt><dd><a href="{{app.source_repo}}">{{app.source_repo}}</a></dd>
+  <dt>Information</dt>
+  <dd>
+    <ul class="list-unstyled muted service-links">
+      <li>
+        <a href="{{ app.documentation }}">
+          <span data-ng-class="{ 'text-danger': !isPresent(app.documentation) }" >{{ app.documentation | docLinkCheck: "documentation":"Documentation" }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ app.RSpecs }}">
+          <span data-ng-class="{ 'text-danger': !isPresent(app.RSpecs) }" >{{ app.RSpecs | docLinkCheck: "RSpecs":"RSpecs" }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ app.run_book }}">
+          <span data-ng-class="{ 'text-danger': !isPresent(app.run_book) }" >{{ app.run_book | docLinkCheck: "run book":"Run book" }}</span>
+        </a>
+      </li>
+    </ul>
+  </dd>
+  <dt>Owner Team</dt>
+  <dd>
+    <a ui-sref="teams.detail({teamId:app.owner_team._id})">{{app.owner_team.name}}</a>
+  </dd>
+  <dt>Tech Stack</dt>
+  <dd>
+    {{app.stack}}
+  </dd>
+  <dt>Aliases</dt>
+  <dd>
+      <ul>
+        <li ng-repeat="alias in app.aliases">{{alias}}</li>
+      </ul>
+  </dd>
+  <dt>Uses / dependencies</dt>
+  <dd>
+    <ul>
+      <li ng-repeat="deps in app.uses"><a ui-sref="appInfo.detail({appId:deps})">{{deps}}</a></li>
+    </ul>
+    <a ng-href='/#/graph/{{app._id}}?down=true&hops=1'>Dependency graph</a><br/>
+    <iframe ng-src='{{simple_dependency_graph}}' width="200" height="200"></iframe>
+  </dd>
+<dt>Environments</dt>
+<dd>
+  <div class="panel panel-default" ng-repeat="(key, envrs) in app.environments">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{key}}  <a class="btn btn-info btn-xs" ui-sref="appStatus({appId:app._id,env:'{{key}}'})">Status in the Environment »</a></h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-unstyled">
+        <li ng-repeat="node in envrs.nodes"><span class="label label-info">{{node.name}} [IP: {{node.ip}}]</span></li>
+      </ul>
+      <p>LB Pools:<p>
+      <ul class="list-unstyled">
+        <li ng-repeat="pool in envrs.lb_pools"><span class="label label-warning">{{pool}}</span></li>
+      </ul>
+    </div>
+  </div>
+</dd>
+</dl>
+</div>
+<div>
+    <div data-ng-if="errorMessage" class="Msg Msg--error">
+        <p class="u-marginFlush">{{ errorMessage }}</p>
+    </div>
+</div>

@@ -2,7 +2,7 @@ define(['angular'], function (angular) {
     'use strict';
 
     angular.module('myApp.thumbnailDirective', [])
-        .directive('cdThumbnails', [ function () {
+        .directive('accThumbnails', [ function () {
             return {
                 restrict: 'E',
                 templateUrl: 'common/directives/thumbnails/thumbnails.html',

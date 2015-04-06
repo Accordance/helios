@@ -1,0 +1,15 @@
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="selectedApp" class="col-sm-1 control-label">App</label>
+
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="selectedApp" data-ng-model="name"
+                   typeahead="app.name as app.name for app in apps | filter:$viewValue"
+                   placeholder="type app name …" required
+                   typeahead-on-select="selectApp()"/>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div ui-view class="col-xs-12 col-sm-9" ng-animate="{enter:'fade-enter'}"></div>
+</div>

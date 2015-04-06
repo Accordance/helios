@@ -1,0 +1,39 @@
+<div class="col-xs-12 col-sm-9">
+    <div class="legend" ng-hide="simple_rendering">Nodes: 
+        <div class="legend-type"><div class="legend-icon"></div>all</div>
+        <div class="legend-type" style="display: none"><div class="legend-icon"></div>-</div>
+        <div class="legend-type"><div class="legend-icon"></div>pubsvc</div>
+        <div class="legend-type"><div class="legend-icon"></div>ui</div>
+        <div class="legend-type"><div class="legend-icon"></div>hybrid</div>
+    </div>
+    <div id="graph"></div>
+</div><!--/span 9 -->
+
+<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role='navigation' ng-hide="simple_rendering">
+  <div class="well sidebar-nav" id='kb_view_model_computed'>
+    <form style="padding: 20px" name="graphInfo">
+        <fieldset>
+            <legend>App information</legend>
+            <label>App name (autocomplete)</label>
+            <input type="text" id="applications" data-ng-model="name" typeahead="app._id as app.name for app in getApplications() | filter:$viewValue" placeholder="type app name …" required />
+            <label class="checkbox">
+              <input type="checkbox" value="" data-ng-model="show_dependencies" ng-disabled="graphInfo.$invalid" />
+              My dependencies
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" value="" data-ng-model="show_used_by" ng-disabled="graphInfo.$invalid" />
+              Who is using me?
+            </label>
+            <select class="input-sm" data-ng-model="numOfHops" ng-disabled="graphInfo.$invalid">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option selected="selected">All</option>
+            </select><span class="help-inline"># of hops</span><br>
+            <button class="btn btn-default"  data-ng-click="renderNodeDependencies()" ng-disabled="graphInfo.$invalid">Dependency graph</button>
+            <button class="btn btn-default" data-ng-click="renderFullGraph()" ng-disabled="graphInfo.$invalid">Show Full graph</button>
+        </fieldset>
+    </form>
+  </div><!--/.well -->
+</div><!--/span 3-->

@@ -19,5 +19,21 @@ define(['angular'], function (angular) {
           return response || $q.when(response);
         }
       };
+    }])
+    .factory('appsFactory', ['$resource', function ($resource) {
+        var resource = $resource('/apps/:id', { id: '@appId'});
+
+        var factory = {};
+        factory.resource = resource;
+        factory.get = function (appId) {
+            return resource.get({id: appId});
+        };
+        factory.appNames = function (processor) {
+            return $resource('/apps/names', {}, {
+                getAll: { method: 'GET', isArray: true }
+            }).getAll(processor);
+        };
+
+        return factory;
     }]);
 });

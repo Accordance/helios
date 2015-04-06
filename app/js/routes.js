@@ -11,6 +11,31 @@ define(['angular', 'app', 'lodash'], function (angular, app, lodash) {
         templateUrl: 'feature/home/homeView.html',
         controller: 'HomeCtrl'
       })
+      .state('appInfo', {
+          url: '/appInfo',
+          templateUrl: 'feature/appInfo/appSelector.html',
+          controller: 'appSelectorController'
+      })
+      .state('appInfo.detail', {
+          url: '/:appId',
+          views: {
+              '': {
+                  templateUrl: 'feature/appInfo/appDetail.html',
+                  controller: 'appDetailController'
+              }
+          }
+      })
+      .state('graph', {
+          url: '/graph',
+          templateUrl: 'feature/dependencyGraph/forcedGraphView.html',
+          controller: 'forcedGraphCtrl'
+          //reloadOnSearch: false
+      })
+      .state('graphWithAppName', {
+          url: '/graph/:app_name?down&up&hops&nodes&exclude&include',
+          templateUrl: 'feature/dependencyGraph/forcedGraphView.html',
+          controller: 'forcedGraphCtrl'
+      })
       .state('about', {url: '/about', templateUrl: 'feature/about/aboutView.html'})
       .state('contact', {url: '/contact', templateUrl: 'feature/contact/contactView.html'});
   }]);

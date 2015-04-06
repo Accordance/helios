@@ -1,0 +1,16 @@
+<div class="u-paddingTopDouble u-paddingLeft u-colorPrimary">
+    <!-- TODO: fix the styling -->
+    <div class="Grid">
+        <h2 class="u-giga">{{ groupName }}</h2>
+        <div class="Home-Thumbnail Grid-item u-size1of4 u-padding" data-ng-repeat="thumbnail in thumbnailData">
+            <a data-ng-if="thumbnail.sref" class="Home-Thumbnail-Anchor" href="#" data-ui-sref="{{ thumbnail.sref }}">
+                <img class="Home-Thumbnail-Image u-marginBottom" data-ng-src="{{ thumbnail.img }}" src=""/>
+                <h3 class="Home-Thumbnail-Name u-alpha">{{ thumbnail.name }}</h3>
+            </a>
+            <a data-ng-if="thumbnail.url" class="Home-Thumbnail-Anchor" data-ng-href="{{ thumbnail.url }}">
+                <img class="Home-Thumbnail-Image u-marginBottom" data-ng-src="{{ thumbnail.img }}" src=""/>
+                <h3 class="Home-Thumbnail-Name u-alpha">{{ thumbnail.name }}</h3>
+            </a>
+        </div>
+    </div>
+</div>
