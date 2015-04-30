@@ -542,9 +542,11 @@ module.exports = function (grunt) {
   grunt.registerTask('release', ['clean:dist', 'copy:dist-release', 'useminPrepare', 'concat:generated', 'cssmin',
     'filerev:css', 'replace:dist-release', 'uglify:dist', 'requirejs', 'usemin', "filerev:main-js", 'mainjslocator',
     'replace:index-release']);
+  grunt.registerTask('releaseDev', ['clean:dist', 'dist']);
 
   // build pipeline
   grunt.registerTask('package', ['release', 'clean:pkg', 'compress']);
+  grunt.registerTask('packageDev', ['releaseDev', 'clean:pkg', 'compress', 'template:process-docker-template']);
   grunt.registerTask('on_commit', ['bower', 'package', 'template']);
   grunt.registerTask('commitBuild', ['bower', 'check-ci', 'package', 'template', 'bump::patch', 'gitcommit']);
 };
