@@ -35,6 +35,22 @@ module.exports = function (grunt) {
      * PATHS, FILES
      *************/
 
+    sass: {
+			dist: {
+        options : {
+                    //style : 'compressed' //no need for config.rb
+                    //compass : 'true'
+                },
+				files: [{
+            expand: true,
+            cwd: "app/",
+            src: ["**/*.scss", '!**/_*.scss'],
+            dest: "dist/",
+            ext: ".css"
+        }]
+			}
+		},
+
     // app
     jsFiles: ['app/js/*.js', 'app/feature/**/*.js', 'app/common/**/*.js'],
     cssFiles: ['app/feature/**/*.css', 'app/common/**/*.css'],
@@ -524,7 +540,7 @@ module.exports = function (grunt) {
   //  'connect', 'karma:continuous:start']);
 
   // dist dir generation
-  grunt.registerTask('dist', ['clean:dist', 'replace:index', 'copy:dist', 'replace:dist']);
+  grunt.registerTask('dist', ['clean:dist', 'replace:index', 'copy:dist', 'replace:dist', 'sass:dist']);
   //grunt.registerTask('mocks-dist', ['clean:dist', 'replace:index', 'copy:dist', 'replace:dist-mocks',
   //  'replace:appWithMocks', 'concat:mocks', 'copy:temp']);
 

@@ -20,5 +20,15 @@ define(['angular', 'services'], function (angular) {
       require(['../feature/dependencyGraph/forcedGraphController'], function (controller) {
         $injector.invoke(controller, this, {'$scope': $scope});
       });
+    }])
+    .controller('changeEventsCtrl', ['$scope', '$injector', function ($scope, $injector) {
+      require(['../feature/janus/changeEventsController'], function (controller) {
+        $injector.invoke(controller, this, {'$scope': $scope});
+      });
+    }])
+    .controller('maintenanceEventsCtrl', ['$scope', '$injector', function ($scope, $injector) {
+      require(['../feature/janus/maintenanceEventsController'], function (controller) {
+        $injector.invoke(controller, this, {'$scope': $scope});
+      });
     }]);
 });

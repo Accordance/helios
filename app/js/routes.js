@@ -36,6 +36,16 @@ define(['angular', 'app', 'lodash'], function (angular, app, lodash) {
           templateUrl: 'feature/dependencyGraph/forcedGraphView.html',
           controller: 'forcedGraphCtrl'
       })
+      .state('janus', {
+          url: '/janus',
+          templateUrl: 'feature/janus/maintenanceEventsView.html',
+          controller: 'maintenanceEventsCtrl'
+      })
+      .state('changeEvents', {
+          url: '/janus/buildHistory',
+          templateUrl: 'feature/janus/changeEventsView.html',
+          controller: 'changeEventsCtrl'
+      })
       .state('about', {url: '/about', templateUrl: 'feature/about/aboutView.html'})
       .state('contact', {url: '/contact', templateUrl: 'feature/contact/contactView.html'});
   }]);

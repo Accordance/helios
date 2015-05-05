@@ -6,11 +6,13 @@
 
 	.Home-Thumbnail-Anchor {
 		display: block;
+		margin-left: 50px;
 
 		.Home-Thumbnail-Image {
 			display: block;
 			margin: 0 auto;
-			width: 75%;
+			// width: 75%;
+			width: 200px;
 			max-width: 20rem;
 			opacity: .7;
 
@@ -19,8 +21,9 @@
 			}
 		}
 
-		.Home-Thumbnails-Name {
+		.Home-Thumbnail-Name {
 			text-align: center;
+			//font-size: 18px;
 		}
 	}
 }

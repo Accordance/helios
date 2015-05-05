@@ -1,0 +1,58 @@
+<!-- build:css feature/janus/janus.css -->
+<link rel="stylesheet" href="feature/janus/janus.css">
+<!-- endbuild -->
+<link rel="stylesheet" href="../../lib/ng-table/ng-table.css">
+<div class="header">
+    <div class="row">
+        <div class="pull-left">
+            <img class="pull-left" src="../img/janus.gif" alt="Janus" height="90" width="70">
+            <h2>Janus
+                <small>Change history</small>
+            </h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-primary" data-ui-sref="changeEvents">Builds History »</a>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Maintenance Requests History</h4>
+    </div>
+</div>
+<div id="cronos-timeline" style="height: 150px; border: 1px solid #aaa"></div>
+<div class="text-center">Timeline of events</div>
+<div id="searchBox">
+    <div id="statusFilter" class="col-sm-3"></div>
+</div>
+<table data-ng-table="tableParams" class="table table-condensed" data-show-filter="true">
+    <tr data-ng-repeat="event in $data" data-ng-class="convertStatus(event.status)"
+        data-ng-click="openNewWindow(event.reference_url)">
+        <td data-title="'Time'" data-sortable="'time_frame.start'" data-filter="{ 'time_frame.start': 'text' }">
+            {{event.time_frame.start | date:'MM/dd @ h:mma'}} - {{event.time_frame.end | date:'MM/dd @ h:mma'}}
+        </td>
+        <td data-title="'ENV'" data-sortable="'env'" data-filter="{ 'env': 'statusEnv' }">{{event.env}}</td>
+        <td data-title="'Assignee'" data-sortable="'assignee'" data-filter="{ 'assignee': 'text' }">
+            <img src="https://jira.accordance.com/secure/useravatar?ownerId={{event.ldapName}}" width="24" height="24"/> {{event.assignee}}
+        </td>
+        <td data-title="'Components'" data-sortable="'components'" data-filter="{ 'components': 'text' }">
+            <ul>
+                <li data-ng-repeat="component in event.components">{{component}}</li>
+            </ul>
+        </td>
+        <td data-title="'Status'" data-sortable="'status'" data-filter="{ 'status': 'statusSelect' }">
+            <span class="label label-default">{{event.status}}</span>
+        </td>
+        <td data-title="'Description'" data-sortable="'description'" data-filter="{ 'description': 'text' }">{{event.description}}</td>
+    </tr>
+</table>
+
+<script type="text/ng-template" id="ng-table/filters/statusSelect.html">
+    <select id="statusSelect" data-ng-model="params.filter()[name]" data-ng-options="o.value as o.name for o in status"
+            class="filter filter-select form-control" data-ng-init="params.filter()[name]='All'">
+    </select>
+</script>
+
+<script type="text/ng-template" id="ng-table/filters/statusEnv.html">
+    <select id="envSelect" data-ng-model="params.filter()[name]" data-ng-options="o.value as o.name for o in env"
+            class="filter filter-select form-control" data-ng-init="params.filter()[name]='All'">
+    </select>
+</script>

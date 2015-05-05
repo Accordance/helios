@@ -15,7 +15,12 @@ define(['../../common/directives/thumbnails/thumbnails'], function () {
             name: "Dependency Graph",
             sref: "graph",
             img: "../../img/svg/graph.svg"
-        }
+        },
+        {
+            name: "Janus [Change Management]",
+            sref: "janus",
+            img: "../../img/svg/janus.svg"
+        },
       ];
 
       $scope.$apply();
