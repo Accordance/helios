@@ -35,5 +35,11 @@ define(['angular'], function (angular) {
         };
 
         return factory;
+    }])
+    .factory('maintenanceEventsFactory', ['$resource', function ($resource) {
+        return $resource('/janus/maintenanceEvents');
+    }])
+    .factory('changeEventsFactory', ['$resource', function ($resource) {
+        return $resource('/janus');
     }]);
 });
