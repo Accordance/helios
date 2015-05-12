@@ -1,0 +1,6 @@
+<h2 class="List-header u-colorTitle u-margin u-mega u-marginTopFlush">All Teams</h2>
+<ul class="List nav teams-list-nav u-listStyleNone">
+  <li ng-repeat="team in teams">
+    <a ui-sref="teams.detail({teamId:team._id})">{{team.name}}</a>
+  </li>
+</ul>

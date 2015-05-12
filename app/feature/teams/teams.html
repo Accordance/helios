@@ -1,0 +1,25 @@
+<!-- build:css feature/teams/teams-style.css -->
+<link rel="stylesheet" href="feature/teams/teams-style.css">
+<!-- endbuild -->
+<div class="row">
+  <div class="col-md-3 teams-side-nav">
+    <h2 class="List-header u-colorTitle u-margin u-kilo">Teams</h2>
+    <ul class="List nav u-listStyleNone">
+
+      <!-- This <li> will only add the 'active' class if 'teams.detail' or its descendants are active
+           AND if it is the link for the active team (aka teamtId) -->
+      <li ng-repeat="team in teams"
+          ng-class="{ active: $state.includes('team.detail') && $stateParams.teamtId == team._id }">
+
+        <!-- Here's a ui-sref that is also providing necessary parameters -->
+        <a ui-sref="teams.detail({teamId:team._id})">{{team.name}}</a>
+      </li>
+    </ul>
+
+    <!-- Another named view -->
+    <!-- div ui-view="menuTip"></div -->
+  </div>
+
+  <!-- Our unnamed main ui-view for this template -->
+  <div ui-view class="col-md-9" ng-animate="{enter:'fade-enter'}"></div>
+</div>

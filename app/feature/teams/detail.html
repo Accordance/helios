@@ -1,0 +1,63 @@
+<div class="acc-wrapper">
+
+  <div class="TeamDetails">
+
+    <div class="TeamName-container">
+      <h2 class="TeamDetails-teamName">{{team.name}}</h2>
+
+      <p class="TeamDetails-teamDescription">{{team.description}}</p>
+    </div>
+
+    <div ui-view ng-animate="{enter:'fade-enter'}">
+      <div class="TeamDetails-detailsTable">
+        <div class="TeamDetails-block">
+          <span class="DetailItem">Distribution List:</span>
+          <span class="DetailItem"><a href="mailto:{{team.email}}">{{team.email}}</a></span>
+        </div>
+
+        <div class="TeamDetails-block">
+          <span class="DetailItem">Wiki URL:</span>
+          <span class="DetailItem"><a href="{{team.url}}">{{team.url}}</a></span>
+        </div>
+
+        <div class="TeamDetails-block">
+          <span class="DetailItem">Managers:</span>
+          <span class="DetailItem">
+            <span data-ng-repeat="manager in team.managers">
+              <a href="mailto:{{manager.email}}">{{manager.name}}</a>
+              <span data-ng-if="$index != ( team.managers.length - 1)">, </span>
+            </span>
+          </span>
+        </div>
+
+        <div class="TeamDetails-block">
+          <span class="DetailItem">Team's Build Server:</span>
+          <span class="DetailItem"><a href="{{team.build_server}}">{{team.build_server}}</a></span>
+        </div>
+
+        <div class="TeamDetails-block">
+          <span class="DetailItem">Members: <button data-ng-cloak data-ng-if="teamMember || userAdmin" class="btn btn-xs" ng-click="edit()">Edit</button></span>
+          <span class="DetailItem">
+            <span data-ng-repeat="member in team.members">
+              <a href="mailto:{{member.email}}">{{member.name}}</a>
+              <span data-ng-if="$index != ( team.members.length - 1)">, </span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="TeamDetails-appStatus">
+        <h3 class="AppStatus--h3">Applications:</h3>
+
+        <div class="TeamDetails-labels">
+          <span data-ng-repeat="app in team.applications">
+              <a data-ui-sref="appInfo.detail({appId:app})">
+                <span class="label label-default">{{ app }}</span>
+              </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

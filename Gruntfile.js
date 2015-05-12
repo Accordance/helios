@@ -511,7 +511,7 @@ module.exports = function (grunt) {
           }],
           paths: {
             jquery: "empty:",
-            fed: "empty:"
+            acc: "empty:"
           }
         }
       }

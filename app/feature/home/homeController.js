@@ -7,6 +7,11 @@ define(['../../common/directives/thumbnails/thumbnails'], function () {
             name: "Applications",
             sref: "appInfo",
             img: "../../img/svg/plug.svg"
+        },
+        {
+            name: "Teams",
+            sref: "teams.list",
+            img: "../../img/svg/team.svg"
         }
       ];
 
