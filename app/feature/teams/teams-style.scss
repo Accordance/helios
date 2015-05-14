@@ -1,0 +1,67 @@
+html {
+  font-size: 100%;
+}
+
+.acc-wrapper ul li:before {
+	display: none;
+}
+
+.TeamDetails {
+	width: 100%;
+
+	.TeamName-container {
+		width: 100%;
+		background-color: #394856;
+		padding: 20px 24px 24px;
+		display: table;
+	}
+
+	.TeamDetails-teamName {
+		font-size: 36px;
+		color: #fff;
+	}
+
+	.TeamDetails-teamDescription {
+		font-size: 20px;
+		color: #fff;
+		margin-bottom: 12px;
+	}
+
+	.TeamDetails-statusWallBtn {
+		float: right;
+		width: 130px;
+	}
+
+	.TeamDetails-detailsTable {
+		display: table;
+		background-color: #ececec;
+		width: 100%;
+		border: 2px solid #e4e4e5;
+		border-left: 0;
+		margin: 0 0 24px;
+		margin: 0 0 1.5rem;
+	}
+
+	.TeamDetails-block {
+		display: table-row;
+
+		.DetailItem {
+			display: table-cell;
+			padding: 12px 24px;
+		}
+	}
+
+    .TeamDetails-labels {
+        padding-left: 24px;
+    }
+
+	.AppStatus--h3 {
+		padding: 12px 24px;
+		margin: 0;
+	}
+}
+
+.teams-side-nav {
+  border-right: .125rem solid #d2d8dd;
+  background-color: #f6f8fa;
+}

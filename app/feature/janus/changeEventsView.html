@@ -3,15 +3,12 @@
         <div class="pull-left">
             <img class="pull-left" src="../img/janus.gif" alt="Janus" height="90" width="70">
             <h2>Janus
-                <small>Change history</small>
+                <small>Change Events history</small>
             </h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" data-ui-sref="janus">Maintenance Requests History »</a>
         </div>
-    </div>
-    <div class="row">
-        <h4>Builds History</h4>
     </div>
     <form class="form-inline" role="form">
       <div class="form-group">
@@ -53,7 +50,7 @@
       <tr data-ng-repeat="event in changeEvents">
         <td><a href="/janus/{{event._id}}">{{event.time | date:'MM/dd/yy @ h:mma'}}</a></td>
         <td>{{event.env}}</td>
-        <td><ul><li data-ng-repeat="app in event.systems">{{app}}</li></ul></td>
+        <td><ul><li data-ng-repeat="system in event.systems"><a data-ui-sref="appInfo.detail({appId:system})">{{system}}</a></li></ul></td>
         <td>{{event.metadata.artifact_version}}</td>
         <td><a ng-href="{{event.reference_url}}">{{event.type}} ({{event.event_status}})</a></td>
         <td>{{event.job_status}}</td>

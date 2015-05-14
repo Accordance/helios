@@ -7,15 +7,12 @@
         <div class="pull-left">
             <img class="pull-left" src="../img/janus.gif" alt="Janus" height="90" width="70">
             <h2>Janus
-                <small>Change history</small>
+                <small>Maintenance history</small>
             </h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" data-ui-sref="changeEvents">Builds History »</a>
         </div>
-    </div>
-    <div class="row">
-        <h4>Maintenance Requests History</h4>
     </div>
 </div>
 <div id="cronos-timeline" style="height: 150px; border: 1px solid #aaa"></div>
@@ -24,24 +21,25 @@
     <div id="statusFilter" class="col-sm-3"></div>
 </div>
 <table data-ng-table="tableParams" class="table table-condensed" data-show-filter="true">
-    <tr data-ng-repeat="event in $data" data-ng-class="convertStatus(event.status)"
-        data-ng-click="openNewWindow(event.reference_url)">
+    <tr data-ng-repeat="event in $data" data-ng-class="convertStatus(event.status)">
         <td data-title="'Time'" data-sortable="'time_frame.start'" data-filter="{ 'time_frame.start': 'text' }">
-            {{event.time_frame.start | date:'MM/dd @ h:mma'}} - {{event.time_frame.end | date:'MM/dd @ h:mma'}}
+            {{event.time_frame.start | date:'MM/dd @ h:mma'}} -<br>{{event.time_frame.end | date:'MM/dd @ h:mma'}}
         </td>
         <td data-title="'ENV'" data-sortable="'env'" data-filter="{ 'env': 'statusEnv' }">{{event.env}}</td>
         <td data-title="'Assignee'" data-sortable="'assignee'" data-filter="{ 'assignee': 'text' }">
-            <img src="https://jira.accordance.com/secure/useravatar?ownerId={{event.ldapName}}" width="24" height="24"/> {{event.assignee}}
+            <img ng-src="img/{{event.assignee.id}}.jpg" width="24" height="24"/> {{event.assignee.name}}
         </td>
-        <td data-title="'Components'" data-sortable="'components'" data-filter="{ 'components': 'text' }">
+        <td data-title="'Systems'" data-sortable="'systems'" data-filter="{ 'systems': 'text' }">
             <ul>
-                <li data-ng-repeat="component in event.components">{{component}}</li>
+                <li data-ng-repeat="system in event.systems"><a data-ui-sref="appInfo.detail({appId:system})">{{system}}</a></li>
             </ul>
         </td>
         <td data-title="'Status'" data-sortable="'status'" data-filter="{ 'status': 'statusSelect' }">
             <span class="label label-default">{{event.status}}</span>
         </td>
-        <td data-title="'Description'" data-sortable="'description'" data-filter="{ 'description': 'text' }">{{event.description}}</td>
+        <td data-title="'Description'" data-sortable="'description'" data-filter="{ 'description': 'text' }">
+          <a href="{{event.reference_url}}" target="_new">{{event.description}}</a>
+        </td>
     </tr>
 </table>
 

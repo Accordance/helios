@@ -12,12 +12,11 @@ define(['moment', 'ng-table', 'lodash'], function (moment, ngTable, lodash) {
 
         $scope.env = [
             { name: 'All', value: ''},
-            { name: 'p2', value: 'p2'},
-            { name: 'd1', value: 'd1'},
-            { name: 'f1', value: 'f1'},
-            { name: 'f2', value: 'f2'},
-            { name: 'l1', value: 'l1'},
-            { name: 's1', value: 's1'}
+            { name: 'E1', value: 'e1'},
+            { name: 'E2', value: 'e2'},
+            { name: 'E3', value: 'e3'},
+            { name: 'E4', value: 'e4'},
+            { name: 'E5', value: 'e5'}
         ];
 
         $scope.convertStatus = function (status) {
@@ -109,22 +108,22 @@ define(['moment', 'ng-table', 'lodash'], function (moment, ngTable, lodash) {
 //            $('#statusFilter').append(statusSelect);
         };
 
-        var assigneeToLdapName = function (assignee) {
-            var finalLdap;
-            var commaSeperated = assignee.split(',');
-            if (commaSeperated.length === 1) {
-              return assignee;
-            }
-            finalLdap = commaSeperated[1].substr(1, 1).toLowerCase();
-            finalLdap += commaSeperated[0].toLowerCase();
-            return finalLdap;
-        };
+        // var assigneeToLdapName = function (assignee) {
+        //     var finalLdap;
+        //     var commaSeperated = assignee.split(',');
+        //     if (commaSeperated.length === 1) {
+        //       return assignee;
+        //     }
+        //     finalLdap = commaSeperated[1].substr(1, 1).toLowerCase();
+        //     finalLdap += commaSeperated[0].toLowerCase();
+        //     return finalLdap;
+        // };
 
         maintenanceEventsFactory.query(function (events) {
             $scope.events = events;
-            angular.forEach(events, function (event) {
-                event.ldapName = assigneeToLdapName(event.assignee);
-            });
+            // angular.forEach(events, function (event) {
+            //     event.ldapName = assigneeToLdapName(event.assignee);
+            // });
 
             setupTimeline(events);
             setupTable(events);
