@@ -1,0 +1,7 @@
+
+
+$httpBackend.whenGET().passThrough();
+}]);
+
+angular.module('myApp.factories').requires.push('myApp.factoriesMocks');
+});
