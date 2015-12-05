@@ -19,7 +19,7 @@ define(['forced-graph'], function(forcedGraph) {
     }
     $scope.getApplications = function() {
       var the_scope = $scope;
-      result = $scope.cached_apps || [];
+      var result = $scope.cached_apps || [];
       if (result.length === 0) {
         return appsFactory.appNames(function(response){
           the_scope.cached_apps = response;
@@ -41,7 +41,7 @@ define(['forced-graph'], function(forcedGraph) {
       $location.search({});
       $location.path('/graph');
     };
-    
+
     $scope.renderNodeDependencies = function() {
       var params = getGraphData();
       params.app_name = $scope.name;

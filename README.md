@@ -5,7 +5,10 @@ Initial Setup
 -------------
 1. Install node
  1. On Mac: `brew install node`
- 1. On Windows: follow these [instructions](https://nodejs.org/en/)
+ 1. On Windows:
+  1. Install NodeJS following these [instructions](https://nodejs.org/en/)
+  1. Install Python 2.7.10 from [here](https://www.python.org/downloads/)
+  1. Install Microsoft C++ build tools. You can get it from the latest [MS Visual Studio 2015 Community](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 1. Install global npm modules (grunt-cli, karma-cli, bower): `npm install -g grunt-cli karma-cli bower`
 1. Change to the 'helios' directory
 1. Install npm dependencies `npm install`
@@ -83,6 +86,7 @@ This is to ensure a consistent experience for engineers and build servers.
 npm's dependencies--defined in [package.json](./package.json)--are used by grunt to perform tasks.
 To check for updates, run `npm outdated -depth=0`.
 If you wish to update any NPM dependencies for the project, update [package.json](./package.json) accordingly and run `npm install`.
+If you wish to update `package.json` install `npm-check-updates` by running `npm install npm-check-updates`
 
 ### Bower
 Bower's dependencies--defined in [bower.json](./bower.json)--are used for front-end asset management.

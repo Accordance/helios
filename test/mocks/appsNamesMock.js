@@ -1,0 +1,615 @@
+var applicationsNamesMock = [{
+  "name": "Slapstick",
+  "id": "slapstick",
+  "_id": "slapstick"
+}, {
+  "name": "Grim Reaper",
+  "id": "grim_reaper",
+  "_id": "grim_reaper"
+}, {
+  "name": "Rat King",
+  "id": "rat_king",
+  "_id": "rat_king"
+}, {
+  "name": "Northstar",
+  "id": "northstar",
+  "_id": "northstar"
+}, {
+  "name": "HYDRA",
+  "id": "hydra",
+  "_id": "hydra"
+}, {
+  "name": "Haven",
+  "id": "haven",
+  "_id": "haven"
+}, {
+  "name": "Muskrat",
+  "id": "muskrat",
+  "_id": "muskrat"
+}, {
+  "name": "Angel",
+  "id": "angel",
+  "_id": "angel"
+}, {
+  "name": "Bebop",
+  "id": "bebop",
+  "_id": "bebop"
+}, {
+  "name": "Guile",
+  "id": "guile",
+  "_id": "guile"
+}, {
+  "name": "Mondo Gecko",
+  "id": "mondo_gecko",
+  "_id": "mondo_gecko"
+}, {
+  "name": "Vertigo",
+  "id": "vertigo",
+  "_id": "vertigo"
+}, {
+  "name": "Prowler",
+  "id": "prowler",
+  "_id": "prowler"
+}, {
+  "name": "Mojo",
+  "id": "mojo",
+  "_id": "mojo"
+}, {
+  "name": "Hawk",
+  "id": "hawk",
+  "_id": "hawk"
+}, {
+  "name": "Avalon",
+  "id": "avalon",
+  "_id": "avalon"
+}, {
+  "name": "Gideon",
+  "id": "gideon",
+  "_id": "gideon"
+}, {
+  "name": "Archangel",
+  "id": "archangel",
+  "_id": "archangel"
+}, {
+  "name": "Tombstone",
+  "id": "tombstone",
+  "_id": "tombstone"
+}, {
+  "name": "Siryn",
+  "id": "siryn",
+  "_id": "siryn"
+}, {
+  "name": "Leonardo",
+  "id": "leonardo",
+  "_id": "leonardo"
+}, {
+  "name": "Silver Surfer",
+  "id": "silver_surfer",
+  "_id": "silver_surfer"
+}, {
+  "name": "Doctor Doom",
+  "id": "doctor_doom",
+  "_id": "doctor_doom"
+}, {
+  "name": "Arcade",
+  "id": "arcade",
+  "_id": "arcade"
+}, {
+  "name": "Cloak and Dagger",
+  "id": "cloak_and_dagger",
+  "_id": "cloak_and_dagger"
+}, {
+  "name": "Spider-Man",
+  "id": "spider_man",
+  "_id": "spider_man"
+}, {
+  "name": "Tyrant",
+  "id": "tyrant",
+  "_id": "tyrant"
+}, {
+  "name": "Tempo",
+  "id": "tempo",
+  "_id": "tempo"
+}, {
+  "name": "Wrecker",
+  "id": "wrecker",
+  "_id": "wrecker"
+}, {
+  "name": "Callisto",
+  "id": "callisto",
+  "_id": "callisto"
+}, {
+  "name": "Robin",
+  "id": "robin",
+  "_id": "robin"
+}, {
+  "name": "Blood Wraith",
+  "id": "blood_wraith",
+  "_id": "blood_wraith"
+}, {
+  "name": "Shiva",
+  "id": "shiva",
+  "_id": "shiva"
+}, {
+  "name": "Thing",
+  "id": "thing",
+  "_id": "thing"
+}, {
+  "name": "Baroness",
+  "id": "baroness",
+  "_id": "baroness"
+}, {
+  "name": "Sleepwalker",
+  "id": "sleepwalker",
+  "_id": "sleepwalker"
+}, {
+  "name": "Doomsday",
+  "id": "doomsday",
+  "_id": "doomsday"
+}, {
+  "name": "Reavers",
+  "id": "reavers",
+  "_id": "reavers"
+}, {
+  "name": "Jinx",
+  "id": "jinx",
+  "_id": "jinx"
+}, {
+  "name": "Doppelganger",
+  "id": "doppelganger",
+  "_id": "doppelganger"
+}, {
+  "name": "Annihilus",
+  "id": "annihilus",
+  "_id": "annihilus"
+}, {
+  "name": "Juggernaut",
+  "id": "juggernaut",
+  "_id": "juggernaut"
+}, {
+  "name": "Four Horsemen of Apocalypse",
+  "id": "four_horsemen_of_apocalypse",
+  "_id": "four_horsemen_of_apocalypse"
+}, {
+  "name": "Weapon Omega",
+  "id": "weapon_omega",
+  "_id": "weapon_omega"
+}, {
+  "name": "Catwoman",
+  "id": "catwoman",
+  "_id": "catwoman"
+}, {
+  "name": "Synch",
+  "id": "synch",
+  "_id": "synch"
+}, {
+  "name": "Banshee",
+  "id": "banshee",
+  "_id": "banshee"
+}, {
+  "name": "Goliath",
+  "id": "goliath",
+  "_id": "goliath"
+}, {
+  "name": "Holocaust",
+  "id": "holocaust",
+  "_id": "holocaust"
+}, {
+  "name": "Masque",
+  "id": "masque",
+  "_id": "masque"
+}, {
+  "name": "Magik",
+  "id": "magik",
+  "_id": "magik"
+}, {
+  "name": "Stryfe",
+  "id": "stryfe",
+  "_id": "stryfe"
+}, {
+  "name": "Lobo",
+  "id": "lobo",
+  "_id": "lobo"
+}, {
+  "name": "Wasp",
+  "id": "wasp",
+  "_id": "wasp"
+}, {
+  "name": "Thor",
+  "id": "thor",
+  "_id": "thor"
+}, {
+  "name": "Hulk",
+  "id": "hulk",
+  "_id": "hulk"
+}, {
+  "name": "Hellions",
+  "id": "hellions",
+  "_id": "hellions"
+}, {
+  "name": "Eradicator",
+  "id": "eradicator",
+  "_id": "eradicator"
+}, {
+  "name": "Leatherneck",
+  "id": "leatherneck",
+  "_id": "leatherneck"
+}, {
+  "name": "Xi’an",
+  "id": "xian",
+  "_id": "xian"
+}, {
+  "name": "G.I. Joe",
+  "id": "gi_joe",
+  "_id": "gi_joe"
+}, {
+  "name": "Panda Khan",
+  "id": "panda_khan",
+  "_id": "panda_khan"
+}, {
+  "name": "Mandarin",
+  "id": "mandarin",
+  "_id": "mandarin"
+}, {
+  "name": "Thunderbolts",
+  "id": "thunderbolts",
+  "_id": "thunderbolts"
+}, {
+  "name": "Silver Samurai",
+  "id": "silver_samurai",
+  "_id": "silver_samurai"
+}, {
+  "name": "Stormtrooper",
+  "id": "stormtrooper",
+  "_id": "stormtrooper"
+}, {
+  "name": "Proteus",
+  "id": "proteus",
+  "_id": "proteus"
+}, {
+  "name": "Solo",
+  "id": "solo",
+  "_id": "solo"
+}, {
+  "name": "Huntress",
+  "id": "huntress",
+  "_id": "huntress"
+}, {
+  "name": "Blink",
+  "id": "blink",
+  "_id": "blink"
+}, {
+  "name": "Quicksilver",
+  "id": "quicksilver",
+  "_id": "quicksilver"
+}, {
+  "name": "Aquaman",
+  "id": "aquaman",
+  "_id": "aquaman"
+}, {
+  "name": "Maverick",
+  "id": "maverick",
+  "_id": "maverick"
+}, {
+  "name": "Black Knight",
+  "id": "black_knight",
+  "_id": "black_knight"
+}, {
+  "name": "Medusa",
+  "id": "medusa",
+  "_id": "medusa"
+}, {
+  "name": "Saracen",
+  "id": "saracen",
+  "_id": "saracen"
+}, {
+  "name": "Scarlet Witch",
+  "id": "scarlet_witch",
+  "_id": "scarlet_witch"
+}, {
+  "name": "Roadblock",
+  "id": "roadblock",
+  "_id": "roadblock"
+}, {
+  "name": "Havok",
+  "id": "havok",
+  "_id": "havok"
+}, {
+  "name": "Storm",
+  "id": "storm",
+  "_id": "storm"
+}, {
+  "name": "Snake-Eyes",
+  "id": "snake_eyes",
+  "_id": "snake_eyes"
+}, {
+  "name": "Carnage",
+  "id": "carnage",
+  "_id": "carnage"
+}, {
+  "name": "Union Jack",
+  "id": "union_jack",
+  "_id": "union_jack"
+}, {
+  "name": "Elektra",
+  "id": "elektra",
+  "_id": "elektra"
+}, {
+  "name": "Morg",
+  "id": "morg",
+  "_id": "morg"
+}, {
+  "name": "Penguin",
+  "id": "penguin",
+  "_id": "penguin"
+}, {
+  "name": "Green Goblin",
+  "id": "green_goblin",
+  "_id": "green_goblin"
+}, {
+  "name": "Michaelangelo",
+  "id": "michaelangelo",
+  "_id": "michaelangelo"
+}, {
+  "name": "Daredevil",
+  "id": "daredevil",
+  "_id": "daredevil"
+}, {
+  "name": "Spawn",
+  "id": "spawn",
+  "_id": "spawn"
+}, {
+  "name": "Azrael",
+  "id": "azrael",
+  "_id": "azrael"
+}, {
+  "name": "Cardiac",
+  "id": "cardiac",
+  "_id": "cardiac"
+}, {
+  "name": "Kingpin",
+  "id": "kingpin",
+  "_id": "kingpin"
+}, {
+  "name": "Iceman",
+  "id": "iceman",
+  "_id": "iceman"
+}, {
+  "name": "Napoleon Bonafrog",
+  "id": "napoleon_bonafrog",
+  "_id": "napoleon_bonafrog"
+}, {
+  "name": "Mastermind",
+  "id": "mastermind",
+  "_id": "mastermind"
+}, {
+  "name": "Mysterio",
+  "id": "mysterio",
+  "_id": "mysterio"
+}, {
+  "name": "Nightcrawler",
+  "id": "nightcrawler",
+  "_id": "nightcrawler"
+}, {
+  "name": "Phoenix",
+  "id": "phoenix",
+  "_id": "phoenix"
+}, {
+  "name": "Ultron",
+  "id": "ultron",
+  "_id": "ultron"
+}, {
+  "name": "Namor",
+  "id": "namor",
+  "_id": "namor"
+}, {
+  "name": "Cesspool",
+  "id": "cesspool",
+  "_id": "cesspool"
+}, {
+  "name": "Apocalypse",
+  "id": "apocalypse",
+  "_id": "apocalypse"
+}, {
+  "name": "Cyborg",
+  "id": "cyborg",
+  "_id": "cyborg"
+}, {
+  "name": "Bionic Commando",
+  "id": "bionic_commando",
+  "_id": "bionic_commando"
+}, {
+  "name": "X-Cutioner",
+  "id": "x_cutioner",
+  "_id": "x_cutioner"
+}, {
+  "name": "Poison Ivy",
+  "id": "poison_ivy",
+  "_id": "poison_ivy"
+}, {
+  "name": "Scorpion",
+  "id": "scorpion",
+  "_id": "scorpion"
+}, {
+  "name": "Lamprey",
+  "id": "lamprey",
+  "_id": "lamprey"
+}, {
+  "name": "Black Panther",
+  "id": "black_panther",
+  "_id": "black_panther"
+}, {
+  "name": "Doctor Octopus",
+  "id": "doctor_octopus",
+  "_id": "doctor_octopus"
+}, {
+  "name": "Sandman",
+  "id": "sandman",
+  "_id": "sandman"
+}, {
+  "name": "Vengeance",
+  "id": "vengeance",
+  "_id": "vengeance"
+}, {
+  "name": "Colossus",
+  "id": "colossus",
+  "_id": "colossus"
+}, {
+  "name": "Marrow",
+  "id": "marrow",
+  "_id": "marrow"
+}, {
+  "name": "Raphael",
+  "id": "raphael",
+  "_id": "raphael"
+}, {
+  "name": "Vulture",
+  "id": "vulture",
+  "_id": "vulture"
+}, {
+  "name": "Widget",
+  "id": "widget",
+  "_id": "widget"
+}, {
+  "name": "Doctor Strange",
+  "id": "doctor_strange",
+  "_id": "doctor_strange"
+}, {
+  "name": "Electro",
+  "id": "electro",
+  "_id": "electro"
+}, {
+  "name": "Jubilee",
+  "id": "jubilee",
+  "_id": "jubilee"
+}, {
+  "name": "Cheetah",
+  "id": "cheetah",
+  "_id": "cheetah"
+}, {
+  "name": "Falcon",
+  "id": "falcon",
+  "_id": "falcon"
+}, {
+  "name": "Rictor",
+  "id": "rictor",
+  "_id": "rictor"
+}, {
+  "name": "Savage Land",
+  "id": "savage_land",
+  "_id": "savage_land"
+}, {
+  "name": "Husk",
+  "id": "husk",
+  "_id": "husk"
+}, {
+  "name": "Siege",
+  "id": "siege",
+  "_id": "siege"
+}, {
+  "name": "Living Tribunal",
+  "id": "living_tribunal",
+  "_id": "living_tribunal"
+}, {
+  "name": "Fleet Trackin",
+  "id": "fleet_trackin",
+  "_id": "fleet_trackin"
+}, {
+  "name": "Polaris",
+  "id": "polaris",
+  "_id": "polaris"
+}, {
+  "name": "Flash",
+  "id": "flash",
+  "_id": "flash"
+}, {
+  "name": "Shredder",
+  "id": "shredder",
+  "_id": "shredder"
+}, {
+  "name": "Gladiator",
+  "id": "gladiator",
+  "_id": "gladiator"
+}, {
+  "name": "Superman",
+  "id": "superman",
+  "_id": "superman"
+}, {
+  "name": "Bane",
+  "id": "bane",
+  "_id": "bane"
+}, {
+  "name": "mutant",
+  "id": "mutant",
+  "_id": "mutant"
+}, {
+  "name": "Omega Red",
+  "id": "omega_red",
+  "_id": "omega_red"
+}, {
+  "name": "Abomination",
+  "id": "abomination",
+  "_id": "abomination"
+}, {
+  "name": "Serpentor",
+  "id": "serpentor",
+  "_id": "serpentor"
+}, {
+  "name": "Sunspot",
+  "id": "sunspot",
+  "_id": "sunspot"
+}, {
+  "name": "Pyro",
+  "id": "pyro",
+  "_id": "pyro"
+}, {
+  "name": "Doctor Mindbender",
+  "id": "doctor_mindbender",
+  "_id": "doctor_mindbender"
+}, {
+  "name": "Rumble",
+  "id": "rumble",
+  "_id": "rumble"
+}, {
+  "name": "Acolytes",
+  "id": "acolytes",
+  "_id": "acolytes"
+}, {
+  "name": "Rage",
+  "id": "rage",
+  "_id": "rage"
+}, {
+  "name": "Guardian",
+  "id": "guardian",
+  "_id": "guardian"
+}, {
+  "name": "Loki",
+  "id": "loki",
+  "_id": "loki"
+}, {
+  "name": "Wolfsbane",
+  "id": "wolfsbane",
+  "_id": "wolfsbane"
+}, {
+  "name": "Bishop",
+  "id": "bishop",
+  "_id": "bishop"
+}, {
+  "name": "Maggott",
+  "id": "maggott",
+  "_id": "maggott"
+}, {
+  "name": "Galactus",
+  "id": "galactus",
+  "_id": "galactus"
+}, {
+  "name": "Mephisto",
+  "id": "mephisto",
+  "_id": "mephisto"
+}, {
+  "name": "Exodus",
+  "id": "exodus",
+  "_id": "exodus"
+}];
+
+$httpBackend.whenGET('/apps/names').respond(applicationsNamesMock);

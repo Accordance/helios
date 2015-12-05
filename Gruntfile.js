@@ -11,6 +11,7 @@ module.exports = function (grunt) {
 
   var staticFiles = require('./staticFiles.js');
   var utils = require('./utilsGrunt.js');
+  var serveStatic = require('serve-static');
 
   // grunt-replace task main.js
   var mainReplacePatterns = staticFiles.jsLibs;
@@ -228,17 +229,24 @@ module.exports = function (grunt) {
           port: 9005,
           base: 'dist',
           livereload: true,
+          // keepalive: true,
           hostname: '0.0.0.0',
           open: {
             target: 'http://localhost:9005'
           },
           middleware: function (connect, options) {
+            if (!Array.isArray(options.base)) {
+                options.base = [options.base];
+            }
+
             var middlewares = [
               modRewrite(['^.*\\?simple\/.*$ /simple.html [L]']),
               modRewrite(['^[^\\.]*$ /index.html [L]'])
             ];
+
+            // Serve static files.
             options.base.forEach(function (base) {
-              return middlewares.push(connect["static"](base));
+              return middlewares.push(serveStatic(base));
             });
             return middlewares;
           }
@@ -535,14 +543,14 @@ module.exports = function (grunt) {
   grunt.registerTask('test', ['karma:single']);
 
   // mocks mode
-  //grunt.registerTask('mocks', ['mocks-dist', 'connect', 'karma:continuous:start', 'watchconfigmocks', 'watch']);
+  grunt.registerTask('mocks', ['mocks-dist', 'connect', 'karma:continuous:start', 'watchconfigmocks', 'watch']);
   //grunt.registerTask('mocks-release', ['release', 'replace:appWithMocks', 'concat:mocks', 'copy:temp',
   //  'connect', 'karma:continuous:start']);
 
   // dist dir generation
   grunt.registerTask('dist', ['clean:dist', 'replace:index', 'copy:dist', 'replace:dist', 'sass:dist']);
-  //grunt.registerTask('mocks-dist', ['clean:dist', 'replace:index', 'copy:dist', 'replace:dist-mocks',
-  //  'replace:appWithMocks', 'concat:mocks', 'copy:temp']);
+  grunt.registerTask('mocks-dist', ['clean:dist', 'replace:index', 'copy:dist', 'replace:dist-mocks', 'sass:dist',
+    'replace:appWithMocks', 'concat:mocks', 'copy:temp']);
 
   // file type tasks
   grunt.registerTask('html', ['htmlhint', 'validation']);
