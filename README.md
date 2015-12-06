@@ -4,11 +4,11 @@ Helios
 Initial Setup
 -------------
 1. Install node
- 1. On Mac: `brew install node`
- 1. On Windows:
-  1. Install NodeJS following these [instructions](https://nodejs.org/en/)
-  1. Install Python 2.7.10 from [here](https://www.python.org/downloads/)
-  1. Install Microsoft C++ build tools. You can get it from the latest [MS Visual Studio 2015 Community](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+  1. On Mac: `brew install node`
+  1. On Windows:
+    1. Install NodeJS following these [instructions](https://nodejs.org/en/)
+    1. Install Python 2.7.10 from [here](https://www.python.org/downloads/)
+    1. Install Microsoft C++ build tools. You can get it from the latest [MS Visual Studio 2015 Community](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 1. Install global npm modules (grunt-cli, karma-cli, bower): `npm install -g grunt-cli karma-cli bower`
 1. Change to the 'helios' directory
 1. Install npm dependencies `npm install`
@@ -79,7 +79,7 @@ Getting the latest and greatest shinny code is cool.
 Here are some basic guidelines:
 
 - Run all tests and perform a manual regression (as needed) before submitting a pull request.
-- Specify the complete version of dependencies (i.e. no *, ~, and such).
+- Specify the complete version of dependencies (i.e. no \*, ~, and such).
 This is to ensure a consistent experience for engineers and build servers.
 
 ### npm
@@ -96,6 +96,49 @@ If Bower fails to download dependencies from git: but has success to download th
 ```
 git config --global url."https://".insteadOf git://
 ```
+
+Practices showcased by this project
+-----------------------------------
+1. Modular approach of writing SPA-type (Single Page Applications) web Applications using [AngularJS](https://angularjs.org/).
+1. Feature-based [directory structure](./app/feature) minimizes impact of a change allowing multiple teams and individuals to work together without breaking each-other
+1. Each feature folder can contain (optionally):
+  1. Controller (JS)
+  1. View (HTML)
+  1. Styles (additional to the main package or, in case of need, an overrides of the main guidelines) can be in the form:
+    1. CSS
+    1. [SaSS](http://sass-lang.com/) - compiled on the fly if the file has .scss extension
+1. External dependencies are hard versioned and managed by:
+  1. [Bower](http://bower.io/) through declarations in manifest [./bower.json](./bower.json) for the web application
+  1. [NPM](https://www.npmjs.com/) through declarations in manifest [package.json](./package.json) for the development environment. This covers all of the tools needed to build and test the application.
+1. Main styles are provided by [Bootstrap](http://getbootstrap.com/) project.
+1. To reduce the size of the initial download the application is broken into components that are lazy-loaded and composed in the browser by [RequireJS](http://requirejs.org/) on demand when user navigates to the view that hasn't been loaded yet
+1. Application "fused" together by [Angular UI Router](https://github.com/angular-ui/ui-router) which removes dependency on the URLs and replaces with navigation by parameter-driven "states"
+1. And much more:
+  1. Cache-busting (adds version to the URLs) - Static asset revisioning through file content hash
+    1. This updates accordingly JS/CSS links in the relevant HTML files
+  1. HTML templating (for parameter-driven HTML [./customization.json](./customization.json))
+  1. "Compilation" process of the web application - translates the original code (from [./app](./app) folder) into the final releasable structure (into [./dist](#) folder)
+  1. usemin
+  1. modRewrite
+  1. RegureJS optimizer
+  1. HTML transformation
+    1. Linting
+    1. validation of HTML against W3C standards
+  1. Linting CSS
+  1. JavaScript transformation
+    1. Linting
+    1. Uglifying
+    1. Minifying
+  1. Testing
+    1. Automatic monitoring (watch) of the file-system and triggering automatic process when any of the relevant components changed
+    1. karma
+    1. e2e via protractor
+    1. Data mocking in the client
+    1. Mocking server responses
+  1. Release process
+    1. Packaging
+    1. Hard-Versionning (w/bumping - auto-increment)
+    1. Docker image (hard-versioned)
 
 Notes
 -----
