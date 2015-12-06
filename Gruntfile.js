@@ -6,6 +6,12 @@ module.exports = function (grunt) {
   // loads all grunt tasks from package.json
   require('load-grunt-tasks')(grunt);
 
+  // Create a duplicate Watch task for Mocks-based execution
+  grunt.renameTask('watch', 'tmpWatch');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.renameTask('watch', 'watch_with_mocks');
+  grunt.renameTask('tmpWatch', 'watch');
+
   // uncomment to time each grunt tasks
   // require('time-grunt')(grunt);
 
@@ -65,14 +71,16 @@ module.exports = function (grunt) {
 
     // test
     testPath: 'test/',
-    testFiles: '<%= testPath %>{config,e2e,helpers,unit}/*.js',
-    mocksPath: 'test/mocks/',
+    testFiles: '<%= testPath %>{config,e2e,helpers,unit,server_mocks}/*.js',
+    mocksPath: '<%= testPath %>/mocks/',
     mocksFiles: '<%= mocksPath %>*.js',
     mocksCombinedFiles: [
       '<%= mocksPath %>setup/mocksStart.js.part',
       '<%= mocksFiles %>',
       '<%= mocksPath %>setup/mocksEnd.js.part'
     ],
+    mocksServerPath: '<%= testPath %>/server_mocks/',
+    mocksServerFiles: '<%= mocksServerPath %>*.js',
 
     /**************
      * ASSET MGMT
@@ -234,15 +242,20 @@ module.exports = function (grunt) {
           open: {
             target: 'http://localhost:9005'
           },
-          middleware: function (connect, options) {
+          middleware: function (connect, options, middlewares) {
+
+            // var middlewares = [];
+
             if (!Array.isArray(options.base)) {
                 options.base = [options.base];
             }
 
-            var middlewares = [
-              modRewrite(['^.*\\?simple\/.*$ /simple.html [L]']),
-              modRewrite(['^[^\\.]*$ /index.html [L]'])
-            ];
+            middlewares.unshift(modRewrite(['^[^\\.]*$ /index.html [L]']));
+            middlewares.unshift(modRewrite(['^.*\\?simple\/.*$ /simple.html [L]']));
+
+            // TODO: enumerate all the files in the server_mocks folder
+            var mock = require('./test/server_mocks/apps_graph');
+            middlewares.unshift(mock.server_mock);
 
             // Serve static files.
             options.base.forEach(function (base) {
@@ -472,7 +485,7 @@ module.exports = function (grunt) {
           livereload: true
         },
         // have to watch mocks too because watch does not work with livereload and subtasks
-        files: ['<%= combinedFiles %>', '<%= mocksCombinedFiles %>']
+        files: ['<%= combinedFiles %>']
       }
     },
     watch_with_mocks: {
@@ -494,7 +507,11 @@ module.exports = function (grunt) {
       },
       mocks: {
         files: ['<%= mocksFiles %>'],
-        tasks: ['concat:mocks', 'newer:jshint:mocks', 'karma:continuous:run', 'dist']
+        tasks: ['concat:mocks', 'newer:jshint:mocks', 'karma:continuous:run', 'mocks-dist']
+      },
+      server_mocks: {
+        files: ['<%= mocksServerFiles %>'],
+        tasks: ['mocks-dist']
       },
       livereload: {
         options: {
@@ -543,7 +560,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', ['karma:single']);
 
   // mocks mode
-  grunt.registerTask('mocks', ['mocks-dist', 'connect', 'karma:continuous:start', 'watchconfigmocks', 'watch']);
+  grunt.registerTask('mocks', ['mocks-dist', 'connect', 'karma:continuous:start', 'watchconfigmocks', 'watch_with_mocks']);
   //grunt.registerTask('mocks-release', ['release', 'replace:appWithMocks', 'concat:mocks', 'copy:temp',
   //  'connect', 'karma:continuous:start']);
 
