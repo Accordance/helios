@@ -113,6 +113,8 @@ Practices showcased by this project
 1. Main styles are provided by [Bootstrap](http://getbootstrap.com/) project.
 1. To reduce the size of the initial download the application is broken into components that are lazy-loaded and composed in the browser by [RequireJS](http://requirejs.org/) on demand when user navigates to the view that hasn't been loaded yet
 1. Application "fused" together by [Angular UI Router](https://github.com/angular-ui/ui-router) which removes dependency on the URLs and replaces with navigation by parameter-driven "states"
+1. Permalinks - each view state is represented by a full URL. URLs contain both information on the location and the selected data values.
+1. Security - adding [JWT](http://jwt.io/) to each passing HTTP request and modifying UI based on the claims and roles of the user
 1. And much more:
   1. Cache-busting (adds version to the URLs) - Static asset revisioning through file content hash
     1. This updates accordingly JS/CSS links in the relevant HTML files
