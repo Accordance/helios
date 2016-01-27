@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dcsApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 5px;			
+		}
+		th {
+			background-color: gainsboro;
+		}
+	</style>
+</head>
+<body >
+
+	<div style="margin-left:50px;padding-bottom:10px;"> 
+	<form action="#/create">
+		<span>List of Data Centers:</span>
+		<button type="submit" class="btn btn-success">Add new Data Center</button>		
+	</form>
+	</div>
+	<div style="margin-left:50px;padding-bottom:10px;">
+		<table style="width:17%">
+			<tr>
+				<th>ID</th>
+				<th>Description</th>
+			</tr>
+			<tr ng-repeat="dc in datacenters">
+				<td>{{dc.id}}
+				</td>
+				<td>{{dc.descr}}
+				</td>		
+			</tr>	
+		</table>
+	</div>
+</body>
+</html>

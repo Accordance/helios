@@ -1983,6 +1983,7 @@ var apps_graph = {
 };
 
 exports.server_mock = function(req, res, next) {
+    'use strict';
  if (req.url !== '/apps_graph') {
    return next();
  }
@@ -1991,4 +1992,4 @@ exports.server_mock = function(req, res, next) {
  // res.setHeader('Access-Control-Allow-Methods', '*');
  // res.statusCode = 401;
  res.end(JSON.stringify(apps_graph));
-}
+};

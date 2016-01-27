@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		input {
+			border: 1px solid black;
+			width:100px;
+		}
+		div {
+			padding-top:10px;
+			margin-left:100px;
+		}
+	</style>
+</head>
+<body ng-controller="publishDataCenterCtrl">
+	<div>New Data Center:</div>
+	<form role="form" name="dcForm" action="#/dcs">
+		<div>ID: <input type="number" style="margin-left:80px;" ng-model="id" integer required min=0 max=9999999></div>
+		<div>Description: <input type="text" style="margin-left:15px;height:60px;" ng-model="description" required></div>
+		<div>
+			<button type="submit" class="btn btn-success" ng-click="publish()"  ng-disabled="dcForm.$invalid">Publish</button>
+			<button><a href="#/dcs"  style=" text-decoration: none; color: black;">Cancel</a></button>
+		</form>
+		<!-- <form action="#/dcs">
+			<button type="submit" class="btn btn-danger" data-dismiss="modal">Cancel</button>			
+		</form> -->
+		</div>
+		
+		<div ng-show="show"><p>{{ notification }}</p></div>
+	
+</body>
+</html>
