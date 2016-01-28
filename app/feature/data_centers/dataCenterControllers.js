@@ -1,34 +1,22 @@
 define([], function () {
   "use strict";
 
-  return ['$scope', '$stateParams', '$http',function ($scope,$stateParams,$http) {
-	  $scope.show=false;
-    var invokeError = function () {
-      $scope.errorMessage = "Sorry. The application with the id \"" + $stateParams.appId + "\" was not found. " +
-        "Please try again later or \"Provide Feedback.\"";
-    };
-
-    var response = $http.get("data_centers").success(function(response){
-        console.log(response.datacenters);
-        $scope.datacenters = response.datacenters;
-    });
-
+  return ['$scope', 'dataCenterFactory',function ($scope,dataCenterFactory) {
+   
+	  
+    dataCenterFactory.getDatacenters().success(function (response) {
+          $scope.datacenters =  response.datacenters;		 
+        });
+		
   $scope.publish = function(){
 		
-        var dcId = $scope.id;
-        var dcDescr = $scope.description;
+    dataCenterFactory.publishDatacenters($scope.id, $scope.description).success(function(response){
 
-    $http({
-        url:"data_centers",
-        method:"POST",
-        params:{"id": dcId, "descr": dcDescr}
-    }).success(function(response){
-
-    }).error(function(response){
-		$scope.show=true;  
-        alert(response.notification);
-		$scope.notification = response.notification;
-	});
- } ;
+    }).error(function(response){		      
+		
+		alert(response.notification);
+	}); 
+	};
+		
   }];  
 });

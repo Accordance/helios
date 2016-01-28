@@ -120,5 +120,20 @@ define(['angular', 'lodash'], function (angular, lodash) {
     }])
     .factory('changeEventsFactory', ['$resource', function ($resource) {
         return $resource('/janus');
+    }])
+	 .factory('dataCenterFactory', ['$http', function ($http) {
+           var path = '/data_centers';
+		   var factory = {};
+           factory.getDatacenters = function(){
+			  return $http.get(path);   
+		   }; 
+		   factory.publishDatacenters = function(id, descr){
+			return    $http({
+				url:path,
+				method:"POST",
+				params:{"id":id, "descr":descr}
+			});
+		   };
+		   return factory; 
     }]);
 });
