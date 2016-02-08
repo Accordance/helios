@@ -31,7 +31,7 @@ define(['angular', 'services'], function (angular) {
         $injector.invoke(controller, this, {'$scope': $scope});
       });
     }])
-	 .controller('dataCenterControllers', ['$scope', '$injector', function ($scope, $injector) {
+	.controller('dataCenterControllers', ['$scope', '$injector', function ($scope, $injector) {
       require(['../feature/data_centers/dataCenterControllers'], function (controller) {
         $injector.invoke(controller, this, {'$scope': $scope});
       });
