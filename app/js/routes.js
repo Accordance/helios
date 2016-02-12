@@ -187,7 +187,7 @@ define(['angular', 'app', 'lodash'], function (angular, app, lodash) {
           controller: 'dataCenterControllers'
       })
 	  .state('create', {
-          url: '/create',
+          url: '/dcs/create',
           templateUrl: 'feature/data_centers/create.html',
           controller: 'dataCenterControllers'
       });
