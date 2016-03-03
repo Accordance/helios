@@ -1,0 +1,14 @@
+<div id="createPage">
+
+    <div id="title" style="padding-bottom: 20px;">New Data Center:</div>
+    
+    <form role="form" name="dcForm" action="#/dcs">
+      <div id="id" style="padding-bottom: 10px;">ID: <input type="number" style="margin-left:78px;width:15%" ng-model="id" integer required min=0 max=9999999></div>
+      <div id="description">Description: <input type="text" style="margin-left:15px;height:60px;" ng-model="description" required></div>
+      <div style="padding-top: 20px;">
+        <button type="submit" class="btn btn-primary" ng-click="publish()"  ng-disabled="dcForm.$invalid">Publish</button>
+        <button class="btn btn-primary"><a href="#/dcs"  style=" text-decoration: none; color: white;">Cancel</a></button>
+      </div>
+    </form>	
+    
+</div>	

@@ -1,0 +1,17 @@
+Add and View New Data Centers:-
+------------------------------
+
+View Available Data Centers:-
+----------------------------
+1.Helios GUI of data centers page should be launched successfully
+2.In the GUI, the list of available data centers and a button should be visible
+3.In the list of available data centers, ID and Description of each data center should be seen in the GUI
+4.Clicking on the Add new Data Center button should redirect to new data center Creation page
+
+Create New Data Center:-
+------------------------
+1.Clicking on the Add new Data Center button should redirect to new data center Creation page
+2.ID and Description fields,Publish and cancel button should be visible in the Data center creation GUI
+3.New data center should be created successfully and then redirected to Data center home page and the newly added data center should be visible in the list of data centers
+4.Click on the cancel button and then it should redirect to data center home page and also it should not create any data center newly
+5.Try to add a new data center with the existing data center ID. Then it should show the error response as the ID is already existing

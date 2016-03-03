@@ -180,6 +180,16 @@ define(['angular', 'app', 'lodash'], function (angular, app, lodash) {
           controller: 'changeEventsCtrl'
       })
       .state('about', {url: '/about', templateUrl: 'feature/about/aboutView.html'})
-      .state('contact', {url: '/contact', templateUrl: 'feature/contact/contactView.html'});
+      .state('contact', {url: '/contact', templateUrl: 'feature/contact/contactView.html'})
+	  .state('dcs', {
+          url: '/dcs',
+          templateUrl: 'feature/data_centers/dcs.html',
+          controller: 'dataCenterControllers'
+      })
+	  .state('create', {
+          url: '/dcs/create',
+          templateUrl: 'feature/data_centers/create.html',
+          controller: 'dataCenterControllers'
+      });
   }]);
 });

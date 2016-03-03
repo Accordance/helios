@@ -1,0 +1,36 @@
+<html>
+<head>
+<style>
+  .table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+  }
+  .th, td {
+	padding: 5px;			
+  }
+  .th {
+	background-color: gainsboro;
+  }
+</style>
+</head>
+<body>
+<div id="title" style="padding-bottom:10px;"> 
+  <form action="#/dcs/create">
+    <span>List of Data Centers:</span>
+    <button type="submit" class="btn btn-success">Add new Data Center</button>		
+  </form>
+</div>
+<div id="tableDiv">
+  <table style="width:17%">
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+    </tr>
+    <tr ng-repeat="dc in datacenters">
+      <td>{{dc.id}}</td>
+      <td>{{dc.descr}}</td>		
+    </tr>	
+  </table>
+</div>
+</body>
+</html>
